@@ -1,0 +1,109 @@
+<app-empty-cart *ngIf="isEmptyCart()"></app-empty-cart>
+
+<div class=" container-fluid my-5 " *ngIf="!isEmptyCart()">
+    <div class="row justify-content-center ">
+        <div class="col-xl-10">
+            <div class="card shadow-sm ">
+                <div class="row  mx-auto justify-content-center text-center">
+                    <div class="col-12 mt-3 ">
+                        <nav aria-label="breadcrumb" class="second ">
+                            <ol class="breadcrumb indigo lighten-6 first  ">
+                                <li class="breadcrumb-item font-weight-bold "><a class="black-text text-uppercase "
+                                        routerLink="/"><span class="mr-md-3 mr-1">BACK TO SHOP</span></a><i
+                                        class="fa fa-angle-double-right " aria-hidden="true"></i></li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+
+                <div class="row justify-content-around">
+                    <div class="col-md-4">
+                        <div class="card border-0">
+                            <div class="card-header pb-0">
+                                <h2 class="card-title space ">Checkout</h2>
+
+                            </div>
+                            <div class="card-body">
+                                <div class="row mt-4">
+                                    <div class="col">
+                                        <p class="text-muted mb-2">PAYMENT DETAILS</p>
+                                        <hr class="mt-0">
+                                    </div>
+                                </div>
+                                <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+                                    <div class="form-group" >
+                                        <label for="NAME" class="small text-muted mb-1">FULLNAME</label>
+                                        <input type="text" class="form-control form-control-sm" formControlName="fullname"
+                                            aria-describedby="helpId" placeholder="FULLNAME">
+
+                                        <span class="text-danger" *ngIf="(formControls.fullname.touched || formSubmitted)&& formControls.fullname.errors?.required">required field *</span>
+                                        <span class="text-danger" *ngIf="(formControls.fullname.touched || formSubmitted)&& formControls.fullname.errors?.minlength">min length 6 characters</span>
+
+                                    </div>
+                                    <div class="form-group">
+                                        <label  class="small text-muted mb-1">CARD NUMBER</label>
+                                        <input type="number" class="form-control form-control-sm" formControlName="cardNumber"
+                                             placeholder="4534 5555 5555 ****"  >
+                                        <span class="text-danger" *ngIf="(formControls.cardNumber.touched || formSubmitted)&& formControls.cardNumber.errors?.required">required field *</span>
+                                        <span class="text-danger" *ngIf="(formControls.cardNumber.touched || formSubmitted)&& formControls.cardNumber.errors?.pattern">invalid card number</span>
+
+     
+                                    </div>
+                                    <div class="form-group">
+                                        <label  class="small text-muted mb-1">ADDRESS</label>
+                                        <input type="text" class="form-control form-control-sm" formControlName="address"
+                                               placeholder="208 E Jackson St. Texas  USA">
+                                        <span class="text-danger" *ngIf="(formControls.address.touched || formSubmitted)&& formControls.address.errors?.required">required field *</span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="small text-muted mb-1">EMAIL</label>
+                                        <input class="form-control form-control-sm" formControlName="email"
+                                             placeholder="user@example.com">
+                                        <span class="text-danger" *ngIf="(formControls.email.touched || formSubmitted)&& formControls.email.errors?.required">required field *</span>
+                                        <span class="text-danger" *ngIf="(formControls.email.touched || formSubmitted)&& formControls.email.errors?.email">invalid email</span>
+
+
+                                    </div>
+                                    <div class="row my-3 ">
+                                        <div class="col">
+                                            <button type="submit" 
+                                                class="btn  btn-lg btn-block p-2 " >PURCHASE</button>
+                                        </div>
+                                    </div>
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card border-0 " >
+                            <div class="card-header card-2">
+                                <p class="card-text text-muted mt-md-4  mb-2 space">YOUR ORDER </p>
+                                <hr class="my-2">
+                            </div>
+                            <div class="card-body pt-0">
+                                <div *ngFor="let item of myCartItems">
+                                    <app-cart-item [cartItem]="item"> </app-cart-item>
+                                </div>
+                                <hr class="my-2">
+                                <div class="row " >
+                                    <div class="col">
+                                        <div class="row justify-content-between">
+                                            <div class="col-4">
+                                                <p><b>Total</b></p>
+                                            </div>
+                                            <div class="flex-sm-col col-auto">
+                                                <p class="mb-1"><b>{{getTotal()}}</b></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
