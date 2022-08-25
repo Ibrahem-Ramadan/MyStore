@@ -2,7 +2,7 @@
 - MyStore web app
 ------------------------
 in my project i try to simulate some e-commerce site functionality as per project rubric 
-
+you can see Demo.mp4 to know the functionality first 
 
 - About my project
 ------------------------
