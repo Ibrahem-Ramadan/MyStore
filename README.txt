@@ -2,7 +2,7 @@
 - MyStore web app
 ------------------------
 in my project i try to simulate some e-commerce site functionality as per project rubric 
-
+you can see Demo.mp4 to know the functionality first 
 
 - About my project
 ------------------------
@@ -28,7 +28,8 @@ also has 10 components
 
 - Run & installation 
 ------------------------
-1- make sure that npm installed on your machine 
+1- download LTS version of Node on your machine 
 2- install angular CLI globally on your machine 
-3- now you can open my project in your editor then try command "ng serve"
-4- Congratulations, MyStore app now is up and running on your machine  
+3- download this repo then you should install node packages on the project by run "npm install" and make sure that you are on the project directory
+4- now you can run command "ng serve"
+5- Congratulations, MyStore app now is up and running on your machine  
