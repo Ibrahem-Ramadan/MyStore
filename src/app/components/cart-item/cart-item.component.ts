@@ -1,4 +1,4 @@
-import { Component, OnInit ,Input} from '@angular/core';
+import { Component, OnInit ,Input, Output, EventEmitter} from '@angular/core';
 import { CartItem } from 'src/app/Models/CartItem';
 import { CartManagementService } from 'src/app/services/cart-management.service';
 
@@ -10,6 +10,7 @@ import { CartManagementService } from 'src/app/services/cart-management.service'
 export class CartItemComponent implements OnInit {
 
   @Input() cartItem : any;
+  @Output() itemDeleted = new EventEmitter;
   quantity:any;
   constructor(private cartService:CartManagementService) { }
 
@@ -22,6 +23,7 @@ export class CartItemComponent implements OnInit {
     this.cartService.cartItems[index].quantity=this.quantity;
   }
   deleteItem(item:CartItem){
-    this.cartService.deleteCartItem(item);
+        this.cartService.deleteCartItem(item);
+        this.itemDeleted.emit();
   }
 }

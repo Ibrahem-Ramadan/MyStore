@@ -4,6 +4,7 @@ import { CartManagementService } from 'src/app/services/cart-management.service'
 import {  Validators, FormGroup, FormBuilder} from '@angular/forms'
 import { OrderConfirmationService } from 'src/app/services/order-confirmation.service';
 import { Router } from '@angular/router';
+import { AlertService } from 'src/_alert';
 
 @Component({
   selector: 'app-cart',
@@ -12,10 +13,14 @@ import { Router } from '@angular/router';
 })
 export class CartComponent implements OnInit {
 
+  options = {
+    autoClose: true,
+    keepAfterRouteChange: false
+  };
   myCartItems:CartItem[]=[];
   formGroup:any ;
   formSubmitted=false;
-  constructor(private router: Router , private cartService : CartManagementService , private formBuilder:FormBuilder ,private order:OrderConfirmationService) { }
+  constructor(private alert:AlertService,private router: Router , private cartService : CartManagementService , private formBuilder:FormBuilder ,private order:OrderConfirmationService) { }
 
   ngOnInit(): void {
     this.myCartItems= this.cartService.getCartList() as CartItem[];
@@ -50,5 +55,9 @@ export class CartComponent implements OnInit {
       this.order.setOrder(this.formGroup.value)
       this.router.navigate(['cart/confirmation']);
     }
+  }
+
+  displayToaster(){
+    this.alert.error('Item Deleted ): ',this.options)
   }
 }

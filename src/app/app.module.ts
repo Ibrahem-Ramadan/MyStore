@@ -15,6 +15,7 @@ import { CartItemComponent } from './components/cart-item/cart-item.component';
 import { ProductItemDetailComponent } from './components/product-item-detail/product-item-detail.component';
 import { EmptyCartComponent } from './components/empty-cart/empty-cart.component';
 import { ConfirmationComponent } from './components/confirmation/confirmation.component';
+import { AlertModule } from 'src/_alert';
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,6 +36,7 @@ import { ConfirmationComponent } from './components/confirmation/confirmation.co
     NgbModule,
     FormsModule,
     ReactiveFormsModule ,
+    AlertModule
   ],
   providers: [],
   bootstrap: [AppComponent]

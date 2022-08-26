@@ -82,8 +82,9 @@
                                 <hr class="my-2">
                             </div>
                             <div class="card-body pt-0">
+                                <alert></alert>
                                 <div *ngFor="let item of myCartItems">
-                                    <app-cart-item [cartItem]="item"> </app-cart-item>
+                                    <app-cart-item [cartItem]="item" (itemDeleted)="displayToaster()"> </app-cart-item>
                                 </div>
                                 <hr class="my-2">
                                 <div class="row " >
